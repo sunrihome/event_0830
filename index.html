@@ -96,39 +96,81 @@ img{display:block;max-width:100%;height:auto} a{color:inherit;text-decoration:no
 .entry-help{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:18px} .help-card{padding:16px;border:1px solid var(--line);border-radius:16px;background:#fafcfd;font-size:13px;color:var(--muted)} .help-card b{display:block;color:var(--ink);margin-bottom:3px}
 .setup-note{margin-top:16px;padding:13px 15px;border-radius:14px;background:#fff8dc;border:1px solid #ffe08a;color:#6d5a1c;font-size:12px;font-weight:800}
 
-.access{background:#f8faf9} .access-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:26px;margin-top:34px} .access-card{padding:30px;background:#fff;border:1px solid var(--line);border-radius:28px} .access-card h3{font-size:27px;margin:0} .addr{font-size:18px;font-weight:900;margin-top:12px} .access-card ul{margin:22px 0 0;padding:0;list-style:none;display:grid;gap:10px;color:var(--muted);font-size:14px}
-.map{
-  min-height:360px;
+.access{background:#f8faf9}
+.access-grid{
+  display:grid;
+  grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);
+  gap:26px;
+  margin-top:34px;
+  align-items:stretch
+}
+.access-card{
+  width:100%;
+  min-width:0;
+  height:100%;
+  padding:30px;
+  background:#fff;
+  border:1px solid var(--line);
   border-radius:28px;
+  display:flex;
+  flex-direction:column
+}
+.access-card h3{font-size:27px;margin:0;line-height:1.35}
+.addr{
+  font-size:18px;
+  font-weight:900;
+  margin-top:12px;
+  line-height:1.65;
+  word-break:keep-all
+}
+.access-card ul{
+  margin:22px 0 0;
+  padding:0;
+  list-style:none;
+  display:grid;
+  gap:10px;
+  color:var(--muted);
+  font-size:14px
+}
+.access-card .hero-actions{margin-top:auto;padding-top:22px}
+.map{
+  width:100%;
+  min-width:0;
+  height:100%;
+  min-height:390px;
   position:relative;
   overflow:hidden;
+  border-radius:28px;
   background:#eef3f5;
   border:8px solid #fff;
   box-shadow:var(--shadow)
 }
 .map iframe{
+  position:absolute;
+  inset:0;
   display:block;
   width:100%;
   height:100%;
-  min-height:344px;
   border:0
 }
 .map-open{
   position:absolute;
-  left:18px;
-  bottom:18px;
+  left:16px;
+  bottom:16px;
   z-index:2;
   display:inline-flex;
   align-items:center;
   justify-content:center;
   gap:7px;
+  max-width:calc(100% - 32px);
   padding:10px 14px;
   border-radius:999px;
-  background:#fff;
+  background:rgba(255,255,255,.96);
   color:var(--cyan-deep);
   font-size:12px;
   font-weight:1000;
-  box-shadow:0 8px 24px rgba(31,58,71,.18)
+  box-shadow:0 8px 24px rgba(31,58,71,.18);
+  white-space:nowrap
 }
 .map-open:hover{color:var(--pink)}
 
@@ -150,6 +192,21 @@ img{display:block;max-width:100%;height:auto} a{color:inherit;text-decoration:no
   .form-banners{grid-template-columns:1fr} .entry-panel{padding:24px 18px;border-radius:25px} .entry-title{display:block} .entry-help{grid-template-columns:1fr}
   .map{min-height:300px}.map iframe{min-height:284px}.map-open{left:12px;bottom:12px;padding:9px 12px} .footer-grid{display:block} .footer-links{margin-top:20px} .mobile-fixed{display:block} .footer{padding-bottom:92px}
 }
+
+@media(max-width:980px){
+  .access-grid{grid-template-columns:1fr;gap:18px}
+  .access-card{height:auto}
+  .map{height:380px;min-height:380px}
+}
+@media(max-width:680px){
+  .access-grid{gap:14px;margin-top:26px}
+  .access-card{padding:23px 18px;border-radius:22px}
+  .access-card h3{font-size:22px}
+  .addr{font-size:16px}
+  .map{height:320px;min-height:320px;border-width:5px;border-radius:22px}
+  .map-open{left:10px;bottom:10px;max-width:calc(100% - 20px);padding:9px 12px}
+}
+
 </style>
 </head>
 <body>
@@ -247,7 +304,7 @@ img{display:block;max-width:100%;height:auto} a{color:inherit;text-decoration:no
   <div class="access-card"><h3>8月30日（日）10:00〜17:00</h3><div class="addr">〒921-8203<br>石川県金沢市鞍月5丁目74</div><ul><li>石川県庁・石川県地場産業振興センター周辺</li><li>金沢ビーンズ、ミスタードーナツなど近隣</li><li>モデルハウス見学は予約制でご案内</li></ul><div class="hero-actions"><a class="btn btn-secondary" href="https://www.sunrihome.jp/" target="_blank" rel="noopener">公式サイトを見る</a></div></div>
   <div class="map" aria-label="サンリー金沢県庁店のGoogleマップ">
     <iframe
-      src="https://www.google.com/maps?q=%E3%80%92920-8203+%E7%9F%B3%E5%B7%9D%E7%9C%8C%E9%87%91%E6%B2%A2%E5%B8%82%E9%9E%8D%E6%9C%88%EF%BC%95%E4%B8%81%E7%9B%AE%EF%BC%97%EF%BC%94&amp;ll=36.599758,136.624732&amp;z=17&amp;hl=ja&amp;output=embed"
+      src="src="https://www.google.com/maps?q=36.599758,136.624732&z=17&hl=ja&output=embed"
       title="サンリー金沢県庁店 Googleマップ"
       loading="lazy"
       allowfullscreen
