@@ -97,10 +97,40 @@ img{display:block;max-width:100%;height:auto} a{color:inherit;text-decoration:no
 .setup-note{margin-top:16px;padding:13px 15px;border-radius:14px;background:#fff8dc;border:1px solid #ffe08a;color:#6d5a1c;font-size:12px;font-weight:800}
 
 .access{background:#f8faf9} .access-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:26px;margin-top:34px} .access-card{padding:30px;background:#fff;border:1px solid var(--line);border-radius:28px} .access-card h3{font-size:27px;margin:0} .addr{font-size:18px;font-weight:900;margin-top:12px} .access-card ul{margin:22px 0 0;padding:0;list-style:none;display:grid;gap:10px;color:var(--muted);font-size:14px}
-.map{min-height:360px;border-radius:28px;position:relative;overflow:hidden;background:linear-gradient(31deg,transparent 46%,#ded8c6 46% 48%,transparent 48%),linear-gradient(112deg,transparent 47%,#ded8c6 47% 49%,transparent 49%),#f9f6ec;border:8px solid #fff;box-shadow:var(--shadow)}
-.road{position:absolute;height:16px;background:#fff;border:2px solid #d2ccbc;border-radius:999px;transform-origin:left center} .r1{width:110%;left:-8%;top:48%;transform:rotate(-7deg)} .r2{width:88%;left:35%;top:6%;transform:rotate(77deg)} .r3{width:74%;left:5%;bottom:15%;transform:rotate(25deg)}
-.map-place{position:absolute;background:rgba(255,255,255,.86);padding:5px 8px;border-radius:8px;font-size:11px;font-weight:900} .mp1{left:12%;top:18%} .mp2{left:36%;bottom:16%} .mp3{right:8%;bottom:12%} .mp4{right:16%;top:20%}
-.pin{position:absolute;left:61%;top:40%;width:52px;height:52px;border-radius:50% 50% 50% 0;background:var(--pink);transform:rotate(-45deg);border:5px solid #fff} .pin:after{content:"";position:absolute;width:14px;height:14px;background:#fff;border-radius:50%;left:14px;top:14px} .pin-label{position:absolute;left:66%;top:35%;background:#fff;padding:8px 10px;border-radius:10px;font-size:12px;font-weight:1000;color:var(--pink)}
+.map{
+  min-height:360px;
+  border-radius:28px;
+  position:relative;
+  overflow:hidden;
+  background:#eef3f5;
+  border:8px solid #fff;
+  box-shadow:var(--shadow)
+}
+.map iframe{
+  display:block;
+  width:100%;
+  height:100%;
+  min-height:344px;
+  border:0
+}
+.map-open{
+  position:absolute;
+  left:18px;
+  bottom:18px;
+  z-index:2;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:7px;
+  padding:10px 14px;
+  border-radius:999px;
+  background:#fff;
+  color:var(--cyan-deep);
+  font-size:12px;
+  font-weight:1000;
+  box-shadow:0 8px 24px rgba(31,58,71,.18)
+}
+.map-open:hover{color:var(--pink)}
 
 .faq-list{max-width:900px;margin:34px auto 0;display:grid;gap:12px} .faq-item{border:1px solid var(--line);border-radius:18px;overflow:hidden;background:#fff} .faq-q{width:100%;padding:18px 20px;border:0;background:#fff;text-align:left;font-weight:1000;display:flex;justify-content:space-between;gap:18px;align-items:center} .faq-q span:first-child:before{content:"Q";display:inline-grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--cyan);color:#fff;margin-right:10px} .faq-q i{font-style:normal;font-size:24px;color:var(--pink);transition:.2s} .faq-a{display:none;padding:0 20px 20px 60px;color:var(--muted);font-size:14px} .faq-item.open .faq-a{display:block} .faq-item.open .faq-q i{transform:rotate(45deg)}
 
@@ -118,7 +148,7 @@ img{display:block;max-width:100%;height:auto} a{color:inherit;text-decoration:no
   .event-grid{grid-template-columns:1fr;gap:16px} .event-card.large,.event-card.small{grid-column:auto;min-height:350px} .reserve-wrap{gap:16px} .time-card,.reserve-note{padding:22px 18px;border-radius:24px}
   .storyline{grid-template-columns:1fr 1fr} .story-dot{width:62px;height:62px} .benefit-box{grid-template-columns:1fr;padding:26px 20px} .gift{margin:auto} .bubbles{grid-template-columns:1fr} .service-grid{grid-template-columns:1fr}
   .form-banners{grid-template-columns:1fr} .entry-panel{padding:24px 18px;border-radius:25px} .entry-title{display:block} .entry-help{grid-template-columns:1fr}
-  .map{min-height:300px} .footer-grid{display:block} .footer-links{margin-top:20px} .mobile-fixed{display:block} .footer{padding-bottom:92px}
+  .map{min-height:300px}.map iframe{min-height:284px}.map-open{left:12px;bottom:12px;padding:9px 12px} .footer-grid{display:block} .footer-links{margin-top:20px} .mobile-fixed{display:block} .footer{padding-bottom:92px}
 }
 </style>
 </head>
@@ -178,7 +208,7 @@ img{display:block;max-width:100%;height:auto} a{color:inherit;text-decoration:no
     <div class="time-card"><h3>体験スケジュール</h3><p>木工教室・漆喰体験 共通</p><div class="times">
       <div class="time-slot"><b>① 10:00〜</b><span>45分</span></div><div class="time-slot"><b>② 11:00〜</b><span>45分</span></div><div class="time-slot"><b>③ 13:30〜</b><span>45分</span></div><div class="time-slot"><b>④ 14:30〜</b><span>45分</span></div><div class="time-slot"><b>⑤ 15:30〜</b><span>45分</span></div>
     </div><div class="limit">各回 4名限定</div></div>
-    <div class="reserve-note"><h3>体験ごとに<br>専用Googleフォームよりお申し込みください。</h3><p>木工教室と漆喰体験は別々のGoogleフォームです。フォーム内で希望時間・参加者情報を入力してください。</p><ul><li>各時間4組限定！先着順。</li><li>木工教室と漆喰体験の両方申込もOK</li><li>夏休みの宿題にも最適！！</li></ul><div class="hero-actions"><a class="btn btn-primary" href="#entry">体験申込を選ぶ →</a></div></div>
+    <div class="reserve-note"><h3>体験ごとに専用Googleフォームよりお申し込みください。</h3><p>木工教室と漆喰体験は別々のGoogleフォームです。フォーム内で希望時間・参加者情報を入力してください。</p><ul><li>各時間4組限定！先着順。</li><li>木工教室と漆喰体験の両方申込もOK</li><li>夏休みの宿題にも最適！！</li></ul><div class="hero-actions"><a class="btn btn-primary" href="#entry">体験申込を選ぶ →</a></div></div>
   </div>
 </div></section>
 
@@ -198,7 +228,7 @@ img{display:block;max-width:100%;height:auto} a{color:inherit;text-decoration:no
 </div></div></section>
 
 <section class="section entry" id="entry"><div class="container">
-  <div class="kicker">APPLICATION</div><h2 class="h2">申込内容を選んで、<br>専用Googleフォームへ。</h2><p class="lead">LP内に入力フォームは置かず、申込内容ごとに専用Googleフォームへ直接ご案内します。スマートフォンでも迷わず選べるよう、大きなリンクバナーに統一しました。</p>
+  <div class="kicker">APPLICATION</div><h2 class="h2">申込内容を選んで、<br>専用フォームへ。</h2><p class="lead">申込内容ごとに専用フォーㇺよりお申込みください。</p>
   <div class="entry-panel">
     <div class="entry-title"><div><h3>お申込みはこちら</h3><p>希望する内容のバナーを選択してください。フォームが別タブで開きます。</p></div></div>
     <div class="form-banners">
@@ -214,9 +244,16 @@ img{display:block;max-width:100%;height:auto} a{color:inherit;text-decoration:no
   </div>
 </div></section>
 
-<section class="section access" id="access"><div class="container"><div class="kicker">ACCESS</div><h2 class="h2">サンリーグループ 金沢県庁店</h2><div class="access-grid">
   <div class="access-card"><h3>8月30日（日）10:00〜17:00</h3><div class="addr">〒921-8203<br>石川県金沢市鞍月5丁目74</div><ul><li>石川県庁・石川県地場産業振興センター周辺</li><li>金沢ビーンズ、ミスタードーナツなど近隣</li><li>モデルハウス見学は予約制でご案内</li></ul><div class="hero-actions"><a class="btn btn-secondary" href="https://www.sunrihome.jp/" target="_blank" rel="noopener">公式サイトを見る</a></div></div>
-  <div class="map" aria-label="金沢県庁店周辺の概略地図"><div class="road r1"></div><div class="road r2"></div><div class="road r3"></div><div class="map-place mp1">金沢ビーンズ</div><div class="map-place mp2">石川県庁</div><div class="map-place mp3">石川県立中央病院</div><div class="map-place mp4">ミスタードーナツ</div><div class="pin"></div><div class="pin-label">サンリー金沢県庁店</div></div>
+  <div class="map" aria-label="サンリー金沢県庁店のGoogleマップ">
+    <iframe
+      src="https://www.google.com/maps?q=%E3%80%92920-8203+%E7%9F%B3%E5%B7%9D%E7%9C%8C%E9%87%91%E6%B2%A2%E5%B8%82%E9%9E%8D%E6%9C%88%EF%BC%95%E4%B8%81%E7%9B%AE%EF%BC%97%EF%BC%94&amp;ll=36.599758,136.624732&amp;z=17&amp;hl=ja&amp;output=embed"
+      title="サンリー金沢県庁店 Googleマップ"
+      loading="lazy"
+      allowfullscreen
+      referrerpolicy="no-referrer-when-downgrade"></iframe>
+    <a class="map-open" href="https://www.google.com/maps?ll=36.599758,136.624732&amp;z=17&amp;t=m&amp;hl=ja&amp;gl=JP&amp;mapclient=embed&amp;q=%E3%80%92920-8203+%E7%9F%B3%E5%B7%9D%E7%9C%8C%E9%87%91%E6%B2%A2%E5%B8%82%E9%9E%8D%E6%9C%88%EF%BC%95%E4%B8%81%E7%9B%AE%EF%BC%97%EF%BC%94" target="_blank" rel="noopener noreferrer">Googleマップで開く ↗</a>
+  </div>
 </div></div></section>
 
 <section class="section"><div class="container"><div class="kicker">FAQ</div><h2 class="h2">よくある質問</h2><div class="faq-list">
