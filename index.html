@@ -386,43 +386,112 @@ img{display:block;max-width:100%;height:auto} a{color:inherit;text-decoration:no
 
 <script>
 (function(){
-  const menuBtn=document.getElementById('menuButton');
-  const nav=document.getElementById('nav');
-  menuBtn.addEventListener('click',()=>{
-    const open=nav.classList.toggle('open');
-    menuBtn.classList.toggle('open',open);
-    menuBtn.setAttribute('aria-expanded',String(open));
-  });
-  nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
-    nav.classList.remove('open');menuBtn.classList.remove('open');menuBtn.setAttribute('aria-expanded','false');
-  }));
-  document.querySelectorAll('.faq-q').forEach(btn=>btn.addEventListener('click',()=>btn.closest('.faq-item').classList.toggle('open')));
 
-  /*
-   * ▼ GoogleフォームURL設定欄
-   * 各フォームを作成後、"" の中に実際のURLを貼り付けてください。
-   * 例:
-   * woodwork: "https://docs.google.com/forms/d/e/xxxxxxxx/viewform"
-   */
+  const menuBtn = document.getElementById('menuButton');
+  const nav = document.getElementById('nav');
+
+  menuBtn.addEventListener('click', () => {
+    const open = nav.classList.toggle('open');
+    menuBtn.classList.toggle('open', open);
+    menuBtn.setAttribute('aria-expanded', String(open));
+  });
+
+  nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    nav.classList.remove('open');
+    menuBtn.classList.remove('open');
+    menuBtn.setAttribute('aria-expanded', 'false');
+  }));
+
+  document.querySelectorAll('.faq-q').forEach(btn =>
+    btn.addEventListener('click', () =>
+      btn.closest('.faq-item').classList.toggle('open')
+    )
+  );
+
+
+  /* ========================================
+     各申込フォームURL
+  ======================================== */
+
   const GOOGLE_FORM_URLS = {
+
+    // 木工教室
     woodwork: "https://forms.gle/y6EsuL6e9bkSBHDs7",
+
+    // 漆喰体験
     plaster: "https://forms.gle/VsYL71v14vN9zeik9",
+
+    // 住まい相談
     housing: "https://www.sunrihouse.jp/contact/",
+
+    // モデルハウス見学
     modelhouse: "https://www.sunrihouse.jp/contact/"
+
   };
 
-  document.querySelectorAll('.gform-link').forEach(link=>{
-    link.addEventListener('click',function(e){
+
+  /* ========================================
+     Google広告 コンバージョン
+  ======================================== */
+
+  const GOOGLE_ADS_CONVERSIONS = {
+
+    // 木工
+    woodwork: "AW-18214949127/V5yJCJTBvuAcEIeiyO1D",
+
+    // 漆喰
+    plaster: "AW-18214949127/xJZ6CNbIr-AcEIeiyO1D",
+
+    // 住まい相談
+    housing: "AW-18214949127/9q68CNibweAcEIeiyO1D",
+
+    // モデルハウス見学
+    modelhouse: "AW-18214949127/9q68CNibweAcEIeiyO1D"
+
+  };
+
+
+  /* ========================================
+     申込ボタンクリック
+  ======================================== */
+
+  document.querySelectorAll('.gform-link').forEach(link => {
+
+    link.addEventListener('click', function(e){
+
       e.preventDefault();
-      const key=this.dataset.formKey;
-      const url=GOOGLE_FORM_URLS[key];
+
+      const key = this.dataset.formKey;
+      const url = GOOGLE_FORM_URLS[key];
+      const conversion = GOOGLE_ADS_CONVERSIONS[key];
+
       if(!url){
-        alert('この申込用GoogleフォームのURLはまだ設定されていません。HTML末尾の GOOGLE_FORM_URLS にURLを設定してください。');
+        alert('申込フォームURLが設定されていません。');
         return;
       }
-      window.open(url,'_blank','noopener,noreferrer');
+
+      /* Google広告コンバージョン発火 */
+      if(conversion && typeof gtag === 'function'){
+
+        gtag('event', 'conversion', {
+          'send_to': conversion,
+          'value': 1.0,
+          'currency': 'JPY'
+        });
+
+      }
+
+      /* フォームを別タブで開く */
+      window.open(
+        url,
+        '_blank',
+        'noopener,noreferrer'
+      );
+
     });
+
   });
+
 })();
 </script>
 </body>
