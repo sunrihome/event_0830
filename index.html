@@ -28,11 +28,28 @@ img{display:block;max-width:100%;height:auto} a{color:inherit;text-decoration:no
 
 .header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.93);backdrop-filter:blur(16px);border-bottom:1px solid rgba(228,237,241,.9)}
 .header-inner{height:74px;display:flex;align-items:center;justify-content:space-between;gap:20px}
-.brand{display:flex;align-items:center;gap:11px;min-width:0} .brand-mark{position:relative;width:46px;height:34px;flex:0 0 46px}
-.brand-mark span{position:absolute;display:block;border:5px solid;border-radius:20px;width:25px;height:18px;transform:rotate(-10deg);top:8px}
-.brand-mark .m1{left:0;border-color:var(--pink)} .brand-mark .m2{right:0;border-color:var(--green);transform:rotate(10deg)}
-.brand-mark:after{content:"";position:absolute;width:14px;height:5px;background:var(--cyan);left:16px;top:15px;border-radius:99px;transform:rotate(8deg)}
-.brand-text{font-weight:1000;line-height:1.2;font-size:18px;white-space:nowrap} .brand-text small{display:block;font-size:10px;letter-spacing:.08em;color:#777;font-weight:800;margin-top:3px}
+.brand{display:flex;align-items:center;gap:11px;min-width:0} .brand-logo{
+  display:block;
+  width:170px;
+  max-width:100%;
+  height:auto;
+  flex:0 0 auto
+}
+.brand-text{
+  font-weight:1000;
+  line-height:1.2;
+  font-size:14px;
+  white-space:nowrap;
+  padding-left:2px
+}
+.brand-text small{
+  display:block;
+  font-size:10px;
+  letter-spacing:.08em;
+  color:#777;
+  font-weight:800;
+  margin-top:3px
+}
 .nav{display:flex;align-items:center;gap:24px;font-size:13px;font-weight:900} .nav a:hover{color:var(--pink)} .nav .cta{padding:12px 18px;border-radius:999px;background:var(--pink);color:#fff}
 .menu{display:none;width:44px;height:44px;border:0;border-radius:12px;background:#eef9fc;position:relative} .menu i,.menu:before,.menu:after{content:"";position:absolute;width:20px;height:2px;left:12px;background:#233842;transition:.2s}
 .menu:before{top:14px} .menu i{top:21px} .menu:after{top:28px} .menu.open i{opacity:0} .menu.open:before{top:21px;transform:rotate(45deg)} .menu.open:after{top:21px;transform:rotate(-45deg)}
@@ -184,7 +201,7 @@ img{display:block;max-width:100%;height:auto} a{color:inherit;text-decoration:no
   .hero-grid,.intro-copy,.consult-grid,.access-grid{grid-template-columns:1fr} .event-card.large,.event-card.small{grid-column:span 6} .reserve-wrap{grid-template-columns:1fr} .storyline{grid-template-columns:repeat(3,1fr);gap:24px 10px} .storyline:before{display:none} .service-grid{grid-template-columns:1fr 1fr}
 }
 @media(max-width:680px){
-  .container{width:min(100% - 28px,1160px)} .section{padding:68px 0} .header-inner{height:66px} .nav{top:66px} .brand-text{font-size:15px} .brand-text small{font-size:9px}
+  .container{width:min(100% - 28px,1160px)} .section{padding:68px 0} .header-inner{height:66px} .nav{top:66px} .brand-logo{width:145px}.brand-text{font-size:13px} .brand-text small{font-size:9px}
   .hero{padding:38px 0 58px} .hero h1{font-size:49px} .hero-grid{gap:30px} .hero-actions{display:grid;grid-template-columns:1fr} .btn{width:100%} .sticker.one{right:-6px;top:-12px} .sticker.two{left:-5px;bottom:8px}
   .quick-grid{grid-template-columns:1fr;gap:6px} .quick-strip{padding:15px 0} .intro-card{padding:26px 19px;border-radius:25px} .points{grid-template-columns:1fr}
   .event-grid{grid-template-columns:1fr;gap:16px} .event-card.large,.event-card.small{grid-column:auto;min-height:350px} .reserve-wrap{gap:16px} .time-card,.reserve-note{padding:22px 18px;border-radius:24px}
