@@ -18,35 +18,35 @@ if (function_exists('mb_language')) {
 */
 $MAIL_CONFIG = [
     'from_name'  => 'SunRi.Group 金沢県庁店',
-    'from_email' => 'noreply@example.invalid',
+    'from_email' => 'iwamotokanri@colimsha.com.invalid',
 
     'routes' => [
         'event-visit' => [
             'label' => 'イベント案内窓口',
-            'email' => 'event-info@example.invalid',
+            'email' => 'iwamotokanri@colimsha.com.invalid',
         ],
         'housing' => [
             'label' => '住まい相談窓口',
-            'email' => 'housing@example.invalid',
+            'email' => 'iwamotokanri@colimsha.com.invalid',
         ],
         'modelhouse' => [
             'label' => 'モデルハウス窓口',
-            'email' => 'modelhouse@example.invalid',
+            'email' => 'iwamotokanri@colimsha.com.invalid',
         ],
         'both' => [
             'label' => 'イベント・住まい総合窓口',
-            'email' => 'familydesk@example.invalid',
+            'email' => 'iwamotokanri@colimsha.com.invalid',
         ],
     ],
 
     'workshops' => [
         '木工教室' => [
             'label' => '木工教室 申込窓口',
-            'email' => 'woodwork@example.invalid',
+            'email' => 'iwamotokanri@colimsha.com.invalid',
         ],
         '漆喰体験' => [
             'label' => '漆喰教室 申込窓口',
-            'email' => 'plaster@example.invalid',
+            'email' => 'iwamotokanri@colimsha.com.invalid',
         ],
     ],
 ];
